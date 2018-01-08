@@ -2,7 +2,7 @@
 
 <div>List of Movies</div>
 <ul>
-  <li *ngFor = 'let movie of movies;' (click) = 'openMovieDtls(movie.id)'>
+  <li *ngFor = 'let movie of movies;' (click) = 'openMovieDtls(movie)'>
     <span><img src="{{movie.imagePath}} " alt=""></span>
     <span class="title">{{movie.title}}</span> <span class="rating">({{movie.vote_average}})</span> 
 </li>

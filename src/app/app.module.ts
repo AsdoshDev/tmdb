@@ -11,6 +11,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { MovieDetailsPage } from '../pages/movie-details/movie-details';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +24,8 @@ import { HttpModule} from '@angular/http';
     HomePage,
     ListPage,
     MovieComponent,
-    MovieDtlsComponent
+    MovieDtlsComponent,
+    MovieDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { HttpModule} from '@angular/http';
     MyApp,
     HomePage,
     ListPage,
-    MovieDtlsComponent
+    MovieDtlsComponent,
+    MovieDetailsPage
   ],
   providers: [
     MovieService,

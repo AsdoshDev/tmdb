@@ -1,0 +1,32 @@
+<!--
+  Generated template for the MovieDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>MovieDetails</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="movieDtls">
+  
+    <div><img src="{{movieDtls?.imagePath}}" alt=""></div>
+     <div> <label>Title : </label>
+      <span> {{movieDtls?.title}}</span></div>
+      <div>  <label>Overview : </label>
+      <span> {{movieDtls?.overview}}</span></div>
+      <div> <label>Rating : </label>
+      <span> {{movieDtls?.vote_average}}</span></div>
+      <div> <label>Runtime : </label>
+      <span> {{movieDtls?.runtime}}m</span></div>
+      <div> <label>Release Date : </label>
+      <span> {{movieDtls?.release_date}}</span></div>
+   
+  </div>
+</ion-content>

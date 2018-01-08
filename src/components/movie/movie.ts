@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import { MovieService } from './movie.service';
 import { Component } from '@angular/core';
+import { MovieDetailsPage } from './../../pages/movie-details/movie-details';
 //import * as Rx from "rxjs"; 
 /**
  * Generated class for the MovieComponent component.
@@ -36,17 +37,18 @@ export class MovieComponent {
     // localStorage.setItem('posterSize',response.images.poster_sizes[0]);
   }
 
-  openMovieDtls(id){
-    this.service.getMovieDtls(id).subscribe(response => {
-      let movie = response.json();
-      let targetMovie = this.movies.find(x => x.id === movie.id);
-      if(targetMovie) {
-        movie.imagePath = targetMovie.imagePath;
-        movie.logoPath = targetMovie.logoPath;
+  openMovieDtls(movie){
+    // this.service.getMovieDtls(id).subscribe(response => {
+    //   let movie = response.json();
+    //   let targetMovie = this.movies.find(x => x.id === movie.id);
+    //   if(targetMovie) {
+    //     movie.imagePath = targetMovie.imagePath;
+    //     movie.logoPath = targetMovie.logoPath;
 
-      }
-      this.navCtrl.push(MovieDtlsComponent,{movieDtls : movie});
-    });
+    //   }
+     // this.navCtrl.push(MovieDtlsComponent,{movieDtls : movie});
+       this.navCtrl.push(MovieDetailsPage,{movie : movie});
+ //   });
   }
 
   addImageUrl(movies){
