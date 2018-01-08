@@ -1,0 +1,21 @@
+movie {
+
+}
+
+
+movie ul{
+    display:flex;
+    flex-flow: row wrap;
+    padding:0;
+justify-content: center;
+}
+
+movie li{
+    cursor: pointer;
+    padding:10px;
+    text-align: center;
+   list-style: none;
+   width: 30%;  /* Or whatever */
+  height: 10%; /* Or whatever */
+
+}

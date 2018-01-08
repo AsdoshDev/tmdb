@@ -1,0 +1,24 @@
+
+ 
+<ion-content padding>
+    <ion-input type="text" [value]="searchText" placeholder="Search for any movie..." (keyup.enter)="callMyFunc()" ></ion-input>
+    <!-- Generated template for the MovieDtlsComponent component -->
+<div class="movieDtls">
+  
+    <div><img src="{{movieDtls?.imagePath}}" alt=""></div>
+     <div> <label>Title : </label>
+      <span> {{movieDtls?.title}}</span></div>
+      <div>  <label>Overview : </label>
+      <span> {{movieDtls?.overview}}</span></div>
+      <div> <label>Rating : </label>
+      <span> {{movieDtls?.vote_average}}</span></div>
+      <div> <label>Runtime : </label>
+      <span> {{movieDtls?.runtime}}m</span></div>
+      <div> <label>Release Date : </label>
+      <span> {{movieDtls?.release_date}}</span></div>
+   
+  </div>
+    </ion-content>
+
+
+
