@@ -35,7 +35,6 @@ ngOnInit() {
       //   movie.logoPath = targetMovie.logoPath;
 
       // }
-     
     });
 }
   ionViewDidLoad() {

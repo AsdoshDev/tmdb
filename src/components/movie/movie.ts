@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
 import { MovieService } from './movie.service';
 import { Component } from '@angular/core';
 import { MovieDetailsPage } from './../../pages/movie-details/movie-details';
-//import * as Rx from "rxjs"; 
+import * as Rx from "rxjs"; 
 /**
  * Generated class for the MovieComponent component.
  *
@@ -69,14 +69,36 @@ export class MovieComponent {
   //   error => console.log(error),
   //   () => console.log("Done")
   // );
-    this.service.getConfig().subscribe(response =>{
-      this.saveConfig(response.json());
-      this.service.getMovies().subscribe(response => {
-        this.movies= response.json();  
-        this.movies  = this.movies.results ? this.movies.results :"";
-        this.addImageUrl(this.movies);
-        console.log(this.movies);
-      })
-    });
+
+
+  // Below is the better  method of using 2 services using observables.
+  //by using switchMap 
+
+
+  const obs1 = this.service.getConfig();
+  const obs2 =  this.service.getMovies();
+
+  Rx.Observable.from(obs1).switchMap(config => {
+    this.saveConfig(config.json());
+    return obs2}
+  ).subscribe(response => 
+  {
+    this.movies= response.json();  
+    this.movies  = this.movies.results ? this.movies.results :"";
+    this.addImageUrl(this.movies);
+  });
+
+// Below is the normal method of using 2 services using observables.
+
+//  this.service.getConfig().subscribe(response =>{
+//       this.saveConfig(response.json());
+//       this.service.getMovies().subscribe(response => {
+//         this.movies= response.json();  
+//         this.movies  = this.movies.results ? this.movies.results :"";
+//         this.addImageUrl(this.movies);
+//         console.log(this.movies);
+//       })
+//     });
+
   }
 }
