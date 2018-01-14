@@ -15,7 +15,7 @@ export class HomePage {
   }
 
 
-callMyFunc(t){
+searchMovie(t){
   this.service.postMovieSearch(t);
 }
 

@@ -1,3 +1,4 @@
+import { Movie } from './../../components/movie/movie.interface';
 import { MovieService } from './../../components/movie/movie.service';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -16,8 +17,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MovieDetailsPage implements OnInit{
   id;
-  movieDtls;
-  movie;
+  movieDtls:Movie;
+  movie:Movie;
 
   constructor(private service:MovieService, public navCtrl: NavController, public navParams: NavParams) {
    // console.log(navParams);

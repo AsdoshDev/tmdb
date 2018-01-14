@@ -2,9 +2,17 @@
 
 <div>List of Movies</div>
 <ul>
-  <li *ngFor = 'let movie of movies;' (click) = 'openMovieDtls(movie)'>
+  
+  <li  *ngFor = 'let movie of movies;' (click) = 'openMovieDtls(movie)'>
     <span><img src="{{movie.imagePath}} " alt=""></span>
     <span class="title">{{movie.title}}</span> <span class="rating">({{movie.vote_average}})</span> 
 </li>
 </ul>
+
+
+<div *ngIf="movies?.length < 1">
+
+<p>No results found :(</p>
+
+</div>
 

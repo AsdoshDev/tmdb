@@ -8,6 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-<ion-input type="text" #searchText placeholder="Search for any movie..." (keyup.enter)="callMyFunc(searchText.value)" ></ion-input>
+<ion-input type="text" #searchText placeholder="Search for any movie..." (keyup)="searchMovie(searchText.value)" ></ion-input>
 <movie></movie>
 </ion-content>

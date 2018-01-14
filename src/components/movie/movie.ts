@@ -1,4 +1,4 @@
-import { MovieDtlsComponent } from './../movie-dtls/movie-dtls';
+//import { MovieDtlsComponent } from './../movie-dtls/movie-dtls';
 import { NavController } from 'ionic-angular';
 //import { GlobalApp } from './../../app/main';
 
@@ -6,6 +6,7 @@ import { MovieService } from './movie.service';
 import { Component } from '@angular/core';
 import { MovieDetailsPage } from './../../pages/movie-details/movie-details';
 import * as Rx from "rxjs"; 
+
 /**
  * Generated class for the MovieComponent component.
  *
@@ -18,7 +19,7 @@ import * as Rx from "rxjs";
 })
 export class MovieComponent {
   md:any;
-  movies:any;
+  movies;
   config:Object = {};
   //numbers = [{name: "karthik"},{name: "jugal"},{name: "ratna"}]
   //numbers = [1,2,3,4,5,6,7,8,9,10];
@@ -58,6 +59,13 @@ export class MovieComponent {
 
     }
   }
+
+
+parseMovieResponse(response) {
+  this.movies= response;  
+  this.movies  = this.movies.results ? this.movies.results :"";
+  this.addImageUrl(this.movies);
+}
   ngOnInit()
 {
   
@@ -81,12 +89,9 @@ export class MovieComponent {
   Rx.Observable.from(obs1).switchMap(config => {
     this.saveConfig(config.json());
     return obs2}
-  ).subscribe(response => 
-  {
-    this.movies= response.json();  
-    this.movies  = this.movies.results ? this.movies.results :"";
-    this.addImageUrl(this.movies);
-  });
+  ).subscribe(response => this.parseMovieResponse(response.json()));
+
+
 
 // Below is the normal method of using 2 services using observables.
 
@@ -99,6 +104,7 @@ export class MovieComponent {
 //         console.log(this.movies);
 //       })
 //     });
-
+this.service.newMovieSubject.subscribe(response => {
+  this.parseMovieResponse(response);});
   }
 }
