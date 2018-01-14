@@ -1,3 +1,4 @@
+import { MovieService } from './../../components/movie/movie.service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -9,13 +10,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,private service:MovieService,) {
 
   }
 
 
 callMyFunc(t){
-  alert();
+  this.service.postMovieSearch(t);
 }
 
 }
