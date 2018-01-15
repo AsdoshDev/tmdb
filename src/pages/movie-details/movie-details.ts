@@ -25,6 +25,7 @@ export class MovieDetailsPage implements OnInit{
   }
 
 ngOnInit() {
+  if(this.movie && this.movie.id){
     this.service.getMovieDtls(this.movie.id).subscribe(response => {
       this.movieDtls = response.json();;
       console.log(this.movieDtls);
@@ -36,6 +37,7 @@ ngOnInit() {
 
       // }
     });
+  }
 }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MovieDetailsPage');

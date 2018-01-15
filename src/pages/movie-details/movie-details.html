@@ -27,6 +27,9 @@
       <span> {{movieDtls?.runtime}}m</span></div>
       <div> <label>Release Date : </label>
       <span> {{movieDtls?.release_date}}</span></div>
+      <div> <label>Genre : </label>
+      <span *ngFor="let genre of movieDtls?.genres">{{genre?.name}}/ </span>
+      </div>
    
   </div>
 </ion-content>

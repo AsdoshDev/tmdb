@@ -6,6 +6,7 @@ import { MovieService } from './movie.service';
 import { Component } from '@angular/core';
 import { MovieDetailsPage } from './../../pages/movie-details/movie-details';
 import * as Rx from "rxjs"; 
+import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
 
 /**
  * Generated class for the MovieComponent component.
@@ -24,7 +25,7 @@ export class MovieComponent {
   //numbers = [{name: "karthik"},{name: "jugal"},{name: "ratna"}]
   //numbers = [1,2,3,4,5,6,7,8,9,10];
   //subscription:any;
-  constructor(private service:MovieService,public navCtrl:NavController){ }
+  constructor(private service:MovieService,public navCtrl:NavController,public  loader:LoadingController){ }
   saveConfig(response){
     console.log(this.config);
     this.config['baseUrl'] = response.images.base_url;
@@ -39,6 +40,14 @@ export class MovieComponent {
   }
 
   openMovieDtls(movie){
+
+    // Loader for the service all 
+    this.loader.create({
+      spinner: "crescent",
+      duration: 800
+    }).present();
+
+
     // this.service.getMovieDtls(id).subscribe(response => {
     //   let movie = response.json();
     //   let targetMovie = this.movies.find(x => x.id === movie.id);
@@ -56,7 +65,6 @@ export class MovieComponent {
     for(var i=0;i<movies.length;i++){
       movies[i].imagePath = this.config['baseUrl'] + this.config['posterSize'] +this.movies[i].poster_path;
       movies[i].logoPath = this.config['baseUrl'] + this.config['logoSize'] +this.movies[i].poster_path;
-
     }
   }
 
