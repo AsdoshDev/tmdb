@@ -2,6 +2,13 @@ movie {
 
 }
 
+.movieDtls label {
+    font-weight: bold;
+}
+
+.movieDtls > div {
+    padding: 5px;
+}
 
 movie ul{
     display:flex;
