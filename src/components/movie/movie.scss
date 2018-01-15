@@ -3,7 +3,7 @@ movie {
 }
 
 .movieDtls label {
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .movieDtls > div {
@@ -14,7 +14,7 @@ movie ul{
     display:flex;
     flex-flow: row wrap;
     padding:0;
-justify-content: center;
+    justify-content: center;
 }
 
 movie li{
