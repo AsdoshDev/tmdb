@@ -8,6 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-<ion-input type="text" #searchText placeholder="Search for any movie..." (keyup)="searchMovie(searchText.value)" ></ion-input>
+<ion-input type="text" #searchText placeholder="Search for any movie..." (keyup)="searchTerm$.next($event.target.value)" ></ion-input>
 <movie></movie>
 </ion-content>
