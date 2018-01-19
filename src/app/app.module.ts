@@ -1,6 +1,6 @@
 import { MovieDtlsComponent } from './../components/movie-dtls/movie-dtls';
 import { MovieService } from './../components/movie/movie.service';
-import { MovieComponent } from './../components/movie/movie';
+import { MovieComponent, KeysPipe } from './../components/movie/movie';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -9,19 +9,24 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MovieDetailsPage } from '../pages/movie-details/movie-details';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { HttpModule} from '@angular/http';
+import { SearchPage } from '../pages/search/search';
 @NgModule({
   declarations: [
+    KeysPipe,
     MyApp,
     HomePage,
     ListPage,
     MovieComponent,
     MovieDtlsComponent,
-    MovieDetailsPage
+    MovieDetailsPage,
+    SearchPage
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -43,9 +48,11 @@ import { HttpModule} from '@angular/http';
     HomePage,
     ListPage,
     MovieDtlsComponent,
-    MovieDetailsPage
+    MovieDetailsPage,
+    SearchPage
   ],
   providers: [
+    KeysPipe,
     MovieService,
     StatusBar,
     SplashScreen,

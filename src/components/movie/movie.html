@@ -1,18 +1,27 @@
+
+
 <!-- Generated template for the MovieComponent component -->
 
-<div>List of Movies</div>
-<ul>
+<!-- <app-movie-section>
+
+</app-movie-section> -->
+<div *ngFor="let key of movieSections | keys">
+  <div class="section" id="{{key}}" (click) = "toggleSection($event)">
+    {{sections[key]}}<ion-icon *ngIf="topRated" name="arrow-up"></ion-icon>
+    <ion-icon *ngIf="!topRated" name="arrow-down"></ion-icon>
+  </div>
   
-  <li  *ngFor = 'let movie of movies;' (click) = 'openMovieDtls(movie)'>
-    <span><img src="{{movie.imagePath}} " alt=""></span>
-    <span class="title">{{movie.title}}</span> <span class="rating">({{movie.vote_average}})</span> 
-</li>
-</ul>
-
-
-<div *ngIf="movies?.length < 1">
-
-<p>No results found :(</p>
-
+  <ul *ngIf="topRated">
+    <li id="movie" *ngFor = 'let movie of movieSections[key];' (click) = 'openMovieDtls($event,movie)'>
+      <span><img src="{{movie.imagePath}} " alt=""></span>
+      <span class="title">{{movie.title}}</span> <span class="rating">({{movie.vote_average}})</span> 
+    </li>
+  </ul>
+  
+  <div *ngIf="movieSections[key]?.length < 1">
+    <p>No results found :(</p>
+  </div>
 </div>
+
+    
 

@@ -16,7 +16,8 @@
 <ion-content padding>
 <div class="movieDtls">
   
-    <div><img src="{{movieDtls?.imagePath}}" alt=""></div>
+     <div class="round"><img src="{{movieDtls?.imagePath}}" alt=""></div>
+     <div class="movieParams">
      <div> <label>Title : </label>
       <span> {{movieDtls?.title}}</span></div>
       <div>  <label>Overview : </label>
@@ -30,6 +31,6 @@
       <div> <label>Genre : </label>
       <span *ngFor="let genre of movieDtls?.genres">{{genre?.name}}/ </span>
       </div>
-   
+    </div>   
   </div>
 </ion-content>

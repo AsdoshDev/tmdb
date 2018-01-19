@@ -1,9 +1,20 @@
-page-movie-details {
-
+.round{
+    width:50%;
+    height:150px;
+    margin:0 auto;
+  
 }
 
-movie-dtls div {
+.movieParams{
+    margin-top:10px;
+}
+.round img{
+    width:100%;
+    height:inherit;
+    border-radius:50%;
+}
 
+.movieParams div {
     padding:10px;
 }
 

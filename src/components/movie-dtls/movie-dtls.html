@@ -7,7 +7,8 @@
   
     <div><img src="{{movieDtls?.imagePath}}" alt=""></div>
      <div> <label>Title : </label>
-      <span> {{movieDtls?.title}}</span></div>
+      <span *ngIf="movieDtls?.title"> {{movieDtls?.title}}</span>
+    </div>
       <div>  <label>Overview : </label>
       <span> {{movieDtls?.overview}}</span></div>
       <div> <label>Rating : </label>

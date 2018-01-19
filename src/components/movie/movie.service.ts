@@ -7,19 +7,29 @@ export class MovieService{
   rooturl:string = "https://api.themoviedb.org/3";
   apiKey:string = 'a9e7482a6c5aba9675676c73cc5ac334';
   config:any;
+  typeMovie:string;
 
   constructor(private http:Http){}
 
-public newMovieSubject = new Subject<any>();
+  public newMovieSubject = new Subject<any>();
 
   getConfig(){
     return this.http.get(this.rooturl+'/configuration?api_key='+this.apiKey)
   }
-  getMovies(){
-    return this.http.get(this.rooturl+'/movie/top_rated?api_key='+this.apiKey+'&language=en-US&page=1');
+  getMovies(typeMovie){
+    return this.http.get(this.rooturl+'/movie/'+typeMovie+'?api_key='+this.apiKey+'&language=en-US&page=1');
   }  
+
+  getTvshows(typeShow){
+    return this.http.get(this.rooturl+'/tv/'+typeShow+'?api_key='+this.apiKey+'&language=en-US&page=1');
+  }  
+
   getMovieDtls(id){
     return this.http.get(this.rooturl+'/movie/'+id+'?api_key='+this.apiKey)
+  }
+
+  getTvDtls(id){
+    return this.http.get(this.rooturl+'/tv/'+id+'?api_key='+this.apiKey)
   }
 
   // searchMovie(terms) {
@@ -35,6 +45,7 @@ public newMovieSubject = new Subject<any>();
       this.http.get(url, {})
       .toPromise()
       .then(response => {
+        debugger;
         this.newMovieSubject.next(response.json());
       // return response.json();
       })
