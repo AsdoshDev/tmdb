@@ -165,6 +165,6 @@ parseMovieResponse(response) {
 //       })
 //     });
 this.service.newMovieSubject.subscribe(response => {
-  this.parseMovieResponse(response,true);});
+  this.parseMovieResponse(response);});
   }
 }
