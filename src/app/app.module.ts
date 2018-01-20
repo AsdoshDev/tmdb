@@ -8,13 +8,11 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MovieDetailsPage } from '../pages/movie-details/movie-details';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-
 import { HttpModule} from '@angular/http';
 import { SearchPage } from '../pages/search/search';
+
 @NgModule({
   declarations: [
     KeysPipe,
@@ -25,8 +23,6 @@ import { SearchPage } from '../pages/search/search';
     MovieDtlsComponent,
     MovieDetailsPage,
     SearchPage
-    
-    
   ],
   imports: [
     BrowserModule,

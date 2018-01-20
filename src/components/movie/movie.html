@@ -5,7 +5,7 @@
 <!-- <app-movie-section>
 
 </app-movie-section> -->
-<div *ngFor="let key of movieSections | keys">
+<div  *ngFor="let key of movieSections | keys">
   <div class="section" id="{{key}}" (click) = "toggleSection($event)">
     {{sections[key]}}<ion-icon *ngIf="topRated" name="arrow-up"></ion-icon>
     <ion-icon *ngIf="!topRated" name="arrow-down"></ion-icon>

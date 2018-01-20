@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class MovieService{
+
   rooturl:string = "https://api.themoviedb.org/3";
   apiKey:string = 'a9e7482a6c5aba9675676c73cc5ac334';
   config:any;
@@ -45,7 +46,6 @@ export class MovieService{
       this.http.get(url, {})
       .toPromise()
       .then(response => {
-        debugger;
         this.newMovieSubject.next(response.json());
       // return response.json();
       })
