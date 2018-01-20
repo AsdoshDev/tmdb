@@ -21,12 +21,19 @@
 
 
 <ion-content padding>
-
-  <ul *ngIf="movies">
+<ion-grid>
+    <ion-row>
+      <ion-col col-4 *ngFor = 'let movie of movies'>
+          <span (click) = 'openMovie($event,movie)' ><img src="{{movie?.imagePath}} " alt=""></span>
+          <span class="title">{{movie?.title}}</span> <span class="rating">({{movie?.vote_average}})</span> 
+     </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ul *ngIf="movies">
     <li id="movie" *ngFor = 'let movie of movies'>
       <span><img src="{{movie.imagePath}} " alt=""></span>
       <span class="title">{{movie.title}}</span> <span class="rating">({{movie.vote_average}})</span> 
     </li>
-  </ul>
+  </ul> -->
 
 </ion-content>

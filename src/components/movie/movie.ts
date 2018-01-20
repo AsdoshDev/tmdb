@@ -57,13 +57,6 @@ export class MovieComponent {
   //numbers = [{name: "karthik"},{name: "jugal"},{name: "ratna"}]
   //numbers = [1,2,3,4,5,6,7,8,9,10];
   //subscription:any;
-  saveConfig(response){
-    this.config['baseUrl'] = response.images.base_url;
-    this.config['logoSize'] = response.images.logo_sizes[0];
-    this.config['backdropSize'] = response.images.backdrop_sizes[0];
-    this.config['posterSize'] = response.images.poster_sizes[4];
-  }
-
   toggleSection(event){
    if(event.target.id === "topRated")
       this.topRated = !this.topRated;
@@ -83,10 +76,10 @@ export class MovieComponent {
       duration: 800
     }).present();
     
-    if(event.currentTarget.id === 'movie')
-      movie.category = "movie";
-      else
+    if(event.currentTarget.id === 'tv')
       movie.category = "tv";
+      else
+      movie.category = "movie";
 
     // this.service.getMovieDtls(id).subscribe(response => {
     //   let movie = response.json();
@@ -152,7 +145,7 @@ parseMovieResponse(response) {
     });
 
   Rx.Observable.from(obs1).switchMap(config => {
-    this.saveConfig(config.json())
+     this.config = config;
     return Rx.Observable.from(combineObs)
     }
   ).subscribe(response => {

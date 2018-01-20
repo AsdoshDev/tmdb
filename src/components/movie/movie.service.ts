@@ -2,21 +2,35 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 
+
 @Injectable()
 export class MovieService{
 
+ 
+
   rooturl:string = "https://api.themoviedb.org/3";
   apiKey:string = 'a9e7482a6c5aba9675676c73cc5ac334';
-  config:any;
+  config = {};
   typeMovie:string;
 
   constructor(private http:Http){}
 
   public newMovieSubject = new Subject<any>();
 
-  getConfig(){
-    return this.http.get(this.rooturl+'/configuration?api_key='+this.apiKey)
+
+  saveConfig(response){
+    this.config['baseUrl'] = response.images.base_url;
+    this.config['logoSize'] = response.images.logo_sizes[0];
+    this.config['backdropSize'] = response.images.backdrop_sizes[0];
+    this.config['posterSize'] = response.images.poster_sizes[4];
+    return this.config;
   }
+
+  getConfig(){
+    let configResp = this.http.get(this.rooturl+'/configuration?api_key='+this.apiKey);
+    return configResp.map(resp => this.saveConfig(resp.json()));
+  }
+
   getMovies(typeMovie){
     return this.http.get(this.rooturl+'/movie/'+typeMovie+'?api_key='+this.apiKey+'&language=en-US&page=1');
   }  
