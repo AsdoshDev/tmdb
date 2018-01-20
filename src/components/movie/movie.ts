@@ -7,7 +7,8 @@ import { Component, Pipe, PipeTransform } from '@angular/core';
 import { MovieDetailsPage } from './../../pages/movie-details/movie-details';
 import * as Rx from "rxjs"; 
 import { LoadingController } from 'ionic-angular/components/loading/loading-controller';
-
+//import { ViewChild } from '@angular/core';
+//import { Slides } from 'ionic-angular';
 /**
  * Generated class for the MovieComponent component.
  *
@@ -15,6 +16,7 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
  * Components.
  */
 @Pipe({ name: 'keys',  pure: false })
+
 export class KeysPipe implements PipeTransform {
   transform(value: any, args: any[] = null): any {
       return Object.keys(value)//.map(key => value[key]);
@@ -25,7 +27,10 @@ export class KeysPipe implements PipeTransform {
   templateUrl: 'movie.html',
  
 })
+
+
 export class MovieComponent {
+  //@ViewChild(Slides) slides: Slides;
   md:any;
   movies;
   sections = {
@@ -35,7 +40,13 @@ export class MovieComponent {
     'popularTv' : 'Popular TV Shows'
   };
 
- 
+  constructor(private service:MovieService,public navCtrl:NavController,public  loader:LoadingController){ }
+
+  ngAfterViewInit() {
+   // this.slides.autoplay();
+    //this.slides.resize();  
+    //this.slides.enableKeyboardControl(true);  
+  }
 
   movieSections = {};
   popularTv:boolean = false;
@@ -46,7 +57,6 @@ export class MovieComponent {
   //numbers = [{name: "karthik"},{name: "jugal"},{name: "ratna"}]
   //numbers = [1,2,3,4,5,6,7,8,9,10];
   //subscription:any;
-  constructor(private service:MovieService,public navCtrl:NavController,public  loader:LoadingController){ }
   saveConfig(response){
     this.config['baseUrl'] = response.images.base_url;
     this.config['logoSize'] = response.images.logo_sizes[0];
@@ -136,9 +146,7 @@ parseMovieResponse(response) {
 
 /* use combineLatest to get multiple observables */
 
-
-
-  let combineObs = obs2.combineLatest([obs3,obs4,obs5], 
+ let combineObs = obs2.combineLatest([obs3,obs4,obs5], 
     (topRated, popular,topRatedTv, popularTv) => { 
         return {topRated: topRated, popular: popular,topRatedTv: topRatedTv, popularTv: popularTv};
     });
@@ -151,20 +159,5 @@ parseMovieResponse(response) {
     this.parseMovieResponse(response);
   });
 
-
-
-// Below is the normal method of using 2 services using observables.
-
-//  this.service.getConfig().subscribe(response =>{
-//       this.saveConfig(response.json());
-//       this.service.getMovies().subscribe(response => {
-//         this.movies= response.json();  
-//         this.movies  = this.movies.results ? this.movies.results :"";
-//         this.addImageUrl(this.movies);
-//         console.log(this.movies);
-//       })
-//     });
-// this.service.newMovieSubject.subscribe(response => {
-//   this.parseMovieResponse(response,true);});
   }
 }

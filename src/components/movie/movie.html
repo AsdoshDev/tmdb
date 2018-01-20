@@ -5,6 +5,18 @@
 <!-- <app-movie-section>
 
 </app-movie-section> -->
+<!-- 
+<h1> {{sections[key]}}</h1>
+<ion-slides parallax="true" slidesPerView="3" centeredSlides="false" *ngFor="let key of movieSections | keys" >
+  
+    <ion-slide  id="{{key}}" class="movie-slide"  *ngFor = 'let movie of movieSections[key];'>
+      <h2><img (click) = 'openMovieDtls($event,movie)' src="{{movie.imagePath}} " alt=""></h2>
+  
+    </ion-slide>
+  </ion-slides>
+
+ -->
+
 <div  *ngFor="let key of movieSections | keys">
   <div class="section" id="{{key}}" (click) = "toggleSection($event)">
     {{sections[key]}}<ion-icon *ngIf="topRated" name="arrow-up"></ion-icon>
